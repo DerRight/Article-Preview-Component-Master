@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Article preview component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      @font-face {
+        font-family: "Manrope";
+        src: url("./font/Manrope/Manrope-VariableFont_wght.ttf")
+          format(truetype);
+        font-display: swap;
+      }
+      :root {
+        --Very-Dark-Grayish-Blue: hsl(217, 19%, 35%);
+        --Desaturated-Dark-Blue: hsl(214, 17%, 51%);
+        --Grayish-Blue: hsl(212, 23%, 69%);
+        --Light-Grayish-Blue: hsl(210, 46%, 95%);
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        inline-size: 1.5;
+        min-height: 100vh;
+        font-size: 13px;
+        font-weight: 500;
+        font-family: "Manrope";
+        background-color: hsl(210, 46%, 95%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        background-color: hsl(0, 0%, 100%);
+        width: auto;
+        height: 300px;
+        box-shadow: 0px 30px 30px hsl(217, 19%, 35%, 0.15);
+
+        .card-picture {
+          width: 305px;
+          height: 300px;
+          overflow: hidden;
+          position: relative;
+
+          img {
+            width: auto;
+            height: 100%;
+            border-radius: 10px 0 0 10px;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+
+        .card-content {
+          display: flex;
+          flex-direction: column;
+          padding: 40px;
+          width: 440px;
+          height: 100%;
+
+          .title {
+            font-weight: 700;
+            font-size: 20px;
+            color: hsl(217, 19%, 35%);
+          }
+
+          .content {
+            color: hsl(214, 17%, 51%);
+            line-height: 20px;
+            margin: 15px 0;
+          }
+
+          .author {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+
+            .user {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              .headshot {
+                width: 40px;
+                height: 40px;
+                margin-right: 15px;
+
+                img {
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
+                }
+              }
+            }
+
+            .user-info {
+              display: flex;
+              flex-direction: column;
+              line-height: 20px;
+
+              .username {
+                color: hsl(217, 19%, 35%);
+                font-weight: 700;
+              }
+
+              .date {
+                color: hsl(212, 23%, 69%);
+              }
+            }
+            
+            .share {
+              width: 40px; height: 40px;
+
+              .icon {
+                width: 40px; height: 40px;
+                background-color: hsl(210, 46%, 95%);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                img {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  width: 16px; height: 14px;
+                }
+              }
+              .icon.active {
+                background-color: hsl(217, 19%, 50%);
+              }
+              .icon img {
+                filter: invert(0);
+              }
+              .icon.active img {
+                filter: brightness(0) saturate(100%) invert(100%);
+              }
+
+              .share-option {
+                width: 250px;
+                height: 60px;
+                display: none;
+                position: absolute;
+                align-items: center;
+                justify-content: center;
+                background-color: hsl(217, 19%, 35%);
+                color: hsl(212, 23%, 69%);
+                letter-spacing: 5px;
+                border-radius: 10px;
+                gap: 15px;
+                margin-top: -125px;
+                margin-left: -106px;
+                box-shadow: 0 4px 8px hsl(212, 23%, 69%);
+
+                .socialicon {
+                  cursor: pointer;
+                  
+                  img {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  }
+                }
+              }
+              .share-option.visible {
+                display: flex;
+                align-items: center;
+              }
+              .share-option::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                border-width: 10px;
+                border-style: solid;
+                border-color: hsl(217, 19%, 35%) transparent transparent transparent;
+              }
+            }
+          }
+        }
+      }
+
+      .attribution {
+        position: absolute;
+        font-size: 11px;
+        text-align: center;
+        bottom: 0;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <article class="card">
+      <picture class="card-picture">
+        <source media="(max-width:650px)" srcset="./images/drawers.jpg" />
+        <img src="./images/drawers.jpg" alt="picture" />
+      </picture>
+
+      <section class="card-content">
+        <p class="title">
+          Shift the overall look and feel by adding these wonderful touches to
+          furniture in your home
+        </p>
+
+        <p class="content">
+          Ever been in a room and felt like something was missing? Perhaps it
+          felt slightly bare and uninviting. I’ve got some simple tips to help
+          you make any room feel complete.
+        </p>
+
+        <section class="author">
+          <section class="user">
+            <figure class="headshot">
+              <img src="./images/avatar-michelle.jpg" alt="headshot" />
+            </figure>
+
+            <section class="user-info">
+              <p class="username">Michelle Appleton</p>
+              <p class="date">28 Jun 2020</p>
+            </section>
+          </section>
+
+          <section class="share">
+            <figure class="icon">
+              <img src="./images/icon-share.svg" alt="icon" />
+            </figure>
+
+            <section class="share-option">
+              <p class="text">SHARE</p>
+  
+              <figure class="socialicon">
+                <img src="./images/icon-facebook.svg" alt="icon">
+              </figure>
+  
+              <figure class="socialicon">
+                <img src="./images/icon-twitter.svg" alt="icon">
+              </figure>
+  
+              <figure class="socialicon">
+                <img src="./images/icon-pinterest.svg" alt="icon">
+              </figure>
+            </section>
+          </section>
+        </section>
+      </section>
+    </article>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">WEI HU</a>.
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const shareIcon = document.querySelector('.icon');
+        const shareOptions = document.querySelector('.share-option');
+
+        shareIcon.addEventListener('click', () => {
+          shareOptions.classList.toggle('visible');
+          shareIcon.classList.toggle('active');
+        });
+      });
+    </script>
+  </body>
+</html>
